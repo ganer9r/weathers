@@ -1,0 +1,31 @@
+<aside class="left-side bg-gray sidebar-offcanvas">
+<section class="sidebar">
+  <ul class="sidebar-menu">
+        <li ng-repeat="menu in $nav.sidemenus" ui-sref-active="active">
+          <!-- Here's a ui-sref that is also providing necessary parameters -->
+          <a ui-sref="{{menu.id}}"><i class="fa {{menu.icon}}"></i>{{menu.name}}</a>
+        </li>
+  </ul>
+</section>
+</aside>
+
+
+
+<aside class="right-side bg-white vbox">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <nav class="navbar navbar-default">
+      <h1>
+          {{$nav.title}}
+          <small>{{$nav.sub_title}}</small>
+      </h1>
+      <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">{{$nav.menu}}</li>
+      </ol>
+    </nav>
+  </section>
+
+  <section class="content" ui-view></section>
+</aside>
+

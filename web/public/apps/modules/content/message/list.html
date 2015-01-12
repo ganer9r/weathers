@@ -1,0 +1,37 @@
+<table ng-table="tableParams" show-filter="true" class="table table-striped">
+<tr ng-repeat="item in $data">
+    <td data-title="'Month'" width="100" filter="{ 'month': 'text' }">
+        <span ng-if="!item.$edit">{{item.month}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.month" /></div>
+    </td>
+    <td data-title="'ment'">
+        <span ng-if="!item.$edit">{{item.ment}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.ment" /></div>
+    </td>
+    <td data-title="'Actions'" width="200">
+        <a ng-if="!item.$edit" href="" class="btn btn-default btn-xs" ng-click="item.$edit = true">Edit</a>
+        <a ng-if="item.$edit" href="" class="btn btn-primary btn-xs" ng-click="save(item)">Save</a>
+        <a ng-if="item.$edit" href="" class="btn btn-danger btn-xs" ng-click="delete(item)">delete</a>
+    </td>
+</tr>
+</table>
+
+<div style="background:#aaa;">
+    <h5>new Message</h5>
+    <div>
+        <table class="table">
+            <tr>
+                <td width="100">
+                    <div><input class="form-control" type="number" ng-model="newitem.month" /></div>
+                </td>
+                <td>
+                    <div><input class="form-control" type="text" ng-model="newitem.ment" /></div>
+                </td>
+                <td width="width">
+                    <a href="" class="btn btn-primary btn-xs" ng-click="save(newitem)">Save</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

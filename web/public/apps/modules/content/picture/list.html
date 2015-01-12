@@ -1,0 +1,44 @@
+<table ng-table="tableParams" show-filter="true" class="table">
+<tr ng-repeat="item in $data">
+    <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
+        <span ng-if="!item.$edit">{{item.season}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.season" /></div>
+    </td>
+    <td data-title="'state'" filter="{'stte':'text'}">
+        <span ng-if="!item.$edit">{{item.state}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.state" /></div>
+    </td>
+    <td data-title="'img'">
+        <span ng-if="!item.$edit">{{item.img}}</span>
+        <div ng-if="item.$edit">aaa</div>
+    </td>
+    <td data-title="'Actions'" width="200">
+        <a ng-if="!item.$edit" href="" class="btn btn-default btn-xs" ng-click="item.$edit = true">Edit</a>
+        <a ng-if="item.$edit" href="" class="btn btn-primary btn-xs" ng-click="save(item)">Save</a>
+        <a ng-if="item.$edit" href="" class="btn btn-danger btn-xs" ng-click="delete(item)">delete</a>
+    </td>
+</tr>
+</table>
+
+<div style="background:#aaa;">
+    <h5>new Season Image</h5>
+    <div>
+        <table class="table">
+            <tr>
+                <td width="100">
+                    <div><input class="form-control" type="number" ng-model="newitem.season" /></div>
+                </td>
+                <td width="100">
+                    <div><input class="form-control" type="number" ng-model="newitem.state" /></div>
+                </td>
+                <td>
+                    <div>aa</div>
+                </td>
+                <td width="width">
+                    <a href="" class="btn btn-primary btn-xs" ng-click="save(newitem)">Save</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
