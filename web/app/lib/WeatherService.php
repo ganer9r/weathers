@@ -1,4 +1,6 @@
 <?php
+use util\Net;
+
 /**
  * Created by PhpStorm.
  * User: shim
@@ -11,7 +13,7 @@ class WeatherService extends _ServiceInstance{
 		//이거 캐싱해야해...
 
 		$url    = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=".$code;
-		$xml    = file_get_contents($url);
+		$xml    = Net::get($url);
 		$xml    = new SimpleXmlElement($xml);
 		$weather    = $xml->channel->item;
 

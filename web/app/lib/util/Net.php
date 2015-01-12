@@ -23,7 +23,7 @@ class Net {
 		return $r;
 	}
 
-	public static function get($url, $param){
+	public static function get($url, $param=array()){
 		if($param){
 			$url .= "?". http_build_query($param);
 		}
