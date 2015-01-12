@@ -20,8 +20,9 @@ class DongCodeService extends _ServiceInstance{
 		);
 		$body   = Net::get($api, $param);
 		$addr   = json_decode($body);
+		print_r($addr);exit;
 
-		return $this->getDongCodeByAddress( str_replace(" ", "", $addr->fullName).'가나' );
+		return $this->getDongCodeByAddress( str_replace(" ", "", $addr->fullName) );
 	}
 
 	private function getDongCodeByAddress($address){

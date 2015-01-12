@@ -23,7 +23,10 @@ class Net {
 		return $r;
 	}
 
-	public static function get($url){
+	public static function get($url, $param){
+		if($param){
+			$url .= "?". http_build_query($param);
+		}
 		return self::_call($url);
 	}
 }
