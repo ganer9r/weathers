@@ -9,6 +9,7 @@ return array(
     'AccountController' => $baseDir . '/app/controllers/AccountController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'DongCode' => $baseDir . '/app/models/DongCode.php',
     'DongCodeService' => $baseDir . '/app/lib/DongCodeService.php',
     'GenerateCommand' => $baseDir . '/app/commands/GenerateCommand.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
@@ -33,4 +34,5 @@ return array(
     '_ServiceInstance' => $baseDir . '/app/lib/_ServiceInstance.php',
     'dao\\TestServiceDao' => $baseDir . '/app/lib/dao/TestServiceDao.php',
     'service\\TestService' => $baseDir . '/app/lib/service/TestService.php',
+    'util\\Net' => $baseDir . '/app/lib/util/Net.php',
 );
