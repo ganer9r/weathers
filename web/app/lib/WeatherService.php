@@ -14,7 +14,7 @@ class WeatherService extends _ServiceInstance{
 
 		$url    = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=".$code;
 		$xml    = Net::get($url);
-		$xml    = new SimpleXmlElement($xml);
+		$xml    = simplexml_load_string($xml);
 		$weather    = $xml->channel->item;
 
 		$items  = array();
