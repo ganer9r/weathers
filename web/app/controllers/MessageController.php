@@ -5,9 +5,10 @@
 class MessageController extends BaseController{
 
 	public function getAll(){
-		$messages = Message::get()->all();
+		$list = Message::get(array('month', 'ment'))->all();
+		$last_date = Weather::max('updated_at');
 
-		return Response::json($messages);
+		return Response::json(array('message_date'=> $last_date, 'messages'=> $list));
 	}
 
 	public function set($id=0){

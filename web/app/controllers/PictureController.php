@@ -5,9 +5,10 @@
 class PictureController extends BaseController{
 
 	public function getAll(){
-		$list = Picture::get(array('season', 'state', 'img', 'size'))->all();
+		$list = Picture::get(array('season', 'state', 'img', 'size', 'updated_at'))->all();
+		$last_date = Weather::max('updated_at');
 
-		return Response::json(array('pictures'=> $list));
+		return Response::json(array('picture_date'=>$last_date, 'pictures'=> $list));
 	}
 
 	public function set($id){

@@ -6,8 +6,9 @@ class WeatherController extends BaseController{
 
 	public function getAll(){
 		$list = Weather::get(array('month', 'state', 'type', 'val'))->all();
+		$last_date = Weather::max('updated_at');
 
-		return Response::json(array('weathers'=> $list));
+		return Response::json(array('weather_date'=>$last_date, 'weathers'=> $list));
 	}
 
 	public function set($id){
