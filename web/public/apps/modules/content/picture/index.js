@@ -41,7 +41,7 @@ var PictureListController = function($state, $scope, $http, $filter, ngTablePara
         }
         
         var id = item.id || '';
-        $http.post('/api/picture/'+id, item).success(function(){
+        $http.post('../api/picture/'+id, item).success(function(){
             if(!id)
                 item = {};
             $state.reload();
@@ -51,12 +51,12 @@ var PictureListController = function($state, $scope, $http, $filter, ngTablePara
     }
 
     $scope.delete = function(item){
-        $http.delete('/api/picture/'+item.id);
+        $http.delete('../api/picture/'+item.id);
         $state.reload();
     }
 
     $scope.load = function(){
-        $http.get('/api/picture').success(function(data, status){
+        $http.get('../api/picture').success(function(data, status){
             $scope.data = data.pictures;
 
             $scope.tableParams = new ngTableParams({

@@ -40,7 +40,7 @@ var WeatherListController = function($state, $scope, $q, $http, $filter, ngTable
         }
         
         var id = item.id || '';
-        $http.post('/api/weather/'+id, item).success(function(){
+        $http.post('../api/weather/'+id, item).success(function(){
             if(!id)
                 item = {};
             $state.reload();
@@ -50,12 +50,12 @@ var WeatherListController = function($state, $scope, $q, $http, $filter, ngTable
     }
 
     $scope.delete = function(item){
-        $http.delete('/api/weather/'+item.id);
+        $http.delete('../api/weather/'+item.id);
         $state.reload();
     }
 
     $scope.load = function(){
-        $http.get('/api/weather').success(function(data, status){
+        $http.get('../api/weather').success(function(data, status){
             $scope.data = data.weathers;
 
             $scope.tableParams = new ngTableParams({
