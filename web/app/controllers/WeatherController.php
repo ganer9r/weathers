@@ -11,17 +11,20 @@ class WeatherController extends BaseController{
 		return Response::json(array('weather_date'=>$last_date, 'weathers'=> $list));
 	}
 
-	public function set($id){
+	public function set($id=''){
 		if( Request::isMethod('POST') ){
 			if($id){
 				$model = Weather::find($id);
 			}
-			if(!$model)
+			if(!isSet($model))
 				$model = new Weather;
 
-			$model->ment = Input::get('ment');
-			$model->month = Input::get('month');
+			$model->month   = Input::get('month', '');
+			$model->state   = Input::get('state', '');
+			$model->type    = Input::get('type', '');
+			$model->val     = Input::get('val', '');
 			$model->save();
+
 
 		}else if(Request::isMethod('DEMETE')){
 			$model = Weather::find($id);
@@ -29,6 +32,6 @@ class WeatherController extends BaseController{
 				$model->delete();
 		}
 
-		return true;
+		return Response::json(true);
 	}
 }

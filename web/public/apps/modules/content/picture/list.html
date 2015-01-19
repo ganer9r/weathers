@@ -4,13 +4,13 @@
         <span ng-if="!item.$edit">{{item.season}}</span>
         <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.season" /></div>
     </td>
-    <td data-title="'state'" filter="{'stte':'text'}">
+    <td data-title="'state'" width="100" filter="{'stte':'text'}">
         <span ng-if="!item.$edit">{{item.state}}</span>
         <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.state" /></div>
     </td>
     <td data-title="'img'">
         <span ng-if="!item.$edit">{{item.img}}</span>
-        <div ng-if="item.$edit">aaa</div>
+        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.img" /></div>
     </td>
     <td data-title="'Actions'" width="200">
         <a ng-if="!item.$edit" href="" class="btn btn-default btn-xs" ng-click="item.$edit = true">Edit</a>
@@ -26,13 +26,20 @@
         <table class="table">
             <tr>
                 <td width="100">
-                    <div><input class="form-control" type="number" ng-model="newitem.season" /></div>
+                    <div>
+                        <label> season :</label>
+                        <input class="form-control" type="number" ng-model="newitem.season" /></div>
                 </td>
                 <td width="100">
-                    <div><input class="form-control" type="number" ng-model="newitem.state" /></div>
+                    <div>
+                        <label> state :</label>
+                        <input class="form-control" type="number" ng-model="newitem.state" /></div>
                 </td>
                 <td>
-                    <div>aa</div>
+                    <div>
+                        <label> image :</label>
+                        <input class="form-control" type="number" ng-model="newitem.img" /></div>
+                    </div>
                 </td>
                 <td width="width">
                     <a href="" class="btn btn-primary btn-xs" ng-click="save(newitem)">Save</a>

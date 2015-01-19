@@ -34,7 +34,7 @@ var WeatherListController = function($state, $scope, $q, $http, $filter, ngTable
     $scope.newitem  = {};
 
     $scope.save = function(item){
-        if(!item.month || !item.ment){
+        if(!item.month || !item.state){
             alert("입력정보가 없습니다.");
             return false;
         }

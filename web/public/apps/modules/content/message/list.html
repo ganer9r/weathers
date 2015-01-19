@@ -1,8 +1,12 @@
 <table ng-table="tableParams" show-filter="true" class="table table-striped">
 <tr ng-repeat="item in $data">
-    <td data-title="'Month'" width="100" filter="{ 'month': 'text' }">
-        <span ng-if="!item.$edit">{{item.month}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.month" /></div>
+    <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
+        <span ng-if="!item.$edit">{{item.season}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.season" /></div>
+    </td>
+    <td data-title="'state'" width="100" filter="{'stte':'text'}">
+        <span ng-if="!item.$edit">{{item.state}}</span>
+        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.state" /></div>
     </td>
     <td data-title="'ment'">
         <span ng-if="!item.$edit">{{item.ment}}</span>
@@ -22,10 +26,19 @@
         <table class="table">
             <tr>
                 <td width="100">
-                    <div><input class="form-control" type="number" ng-model="newitem.month" /></div>
+                    <div>
+                        <label> season :</label>
+                        <input class="form-control" type="number" ng-model="newitem.season" /></div>
+                </td>
+                <td width="100">
+                    <div>
+                        <label> state :</label>
+                        <input class="form-control" type="number" ng-model="newitem.state" /></div>
                 </td>
                 <td>
-                    <div><input class="form-control" type="text" ng-model="newitem.ment" /></div>
+                    <div>
+                        <label> ment :</label>
+                        <input class="form-control" type="text" ng-model="newitem.ment" /></div>
                 </td>
                 <td width="width">
                     <a href="" class="btn btn-primary btn-xs" ng-click="save(newitem)">Save</a>

@@ -5,7 +5,7 @@
 class MessageController extends BaseController{
 
 	public function getAll(){
-		$list = Message::get(array('month', 'ment'))->all();
+		$list = Message::get()->all();
 		$last_date = Weather::max('updated_at');
 
 		return Response::json(array('message_date'=> $last_date, 'messages'=> $list));
@@ -20,7 +20,8 @@ class MessageController extends BaseController{
 				$message = new Message;
 
 			$message->ment = Input::get('ment');
-			$message->month = Input::get('month');
+			$message->season = Input::get('season');
+			$message->state = Input::get('state');
 			$message->save();
 
 		}else if(Request::isMethod('DELETE')){
@@ -28,5 +29,7 @@ class MessageController extends BaseController{
 			if($message)
 				$message->delete();
 		}
+
+		return Response::json(true);
 	}
 }

@@ -34,7 +34,8 @@ var PictureListController = function($state, $scope, $http, $filter, ngTablePara
     $scope.newitem  = {};
 
     $scope.save = function(item){
-        if(!item.month || !item.ment){
+        console.log(item);
+        if(!item.season || !item.img){
             alert("입력정보가 없습니다.");
             return false;
         }

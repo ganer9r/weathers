@@ -34,7 +34,7 @@ var MessageListController = function($state, $scope, $http, $filter, ngTablePara
     $scope.newitem  = {};
 
     $scope.save = function(item){
-        if(!item.month || !item.ment){
+        if(!item.season || !item.ment){
             alert("입력정보가 없습니다.");
             return false;
         }
@@ -56,7 +56,8 @@ var MessageListController = function($state, $scope, $http, $filter, ngTablePara
 
     $scope.load = function(){
         $http.get('/api/message').success(function(data, status){
-            $scope.data = data;
+            $scope.data = data.messages;
+            console.log($scope.data);
 
             $scope.tableParams = new ngTableParams({
                 page: 1,            // show first page
