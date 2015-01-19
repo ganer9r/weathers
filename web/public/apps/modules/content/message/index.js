@@ -40,7 +40,7 @@ var MessageListController = function($state, $scope, $http, $filter, ngTablePara
         }
         
         var id = item.id || '';
-        $http.post('../api/message/'+id, item).success(function(){
+        $http.post('/api/message/'+id, item).success(function(){
             if(!id)
                 item = {};
             $state.reload();
@@ -50,12 +50,12 @@ var MessageListController = function($state, $scope, $http, $filter, ngTablePara
     }
 
     $scope.delete = function(item){
-        $http.delete('../api/message/'+item.id);
+        $http.delete('/api/message/'+item.id);
         $state.reload();
     }
 
     $scope.load = function(){
-        $http.get('../api/message').success(function(data, status){
+        $http.get('/api/message').success(function(data, status){
             $scope.data = data.messages;
             console.log($scope.data);
 

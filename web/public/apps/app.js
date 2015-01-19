@@ -5,7 +5,29 @@
 var app = angular.module('myApp', [
     'ui.router', 
     'content',
-]);
+], function($httpProvider){
+    $httpProvider.interceptors.push(function($q, $location) {
+        return {
+            'request': function(config) {
+                // same as above
+                var html = /^\/api\//;
+                if(html.test(config.url)){
+                    config.url  = '.'+config.url;
+                }
+
+                return config || $q.when(config);
+            },
+
+            'response': function(response) {
+                // same as above
+                return response;
+            },
+            responseError: function (rejection) {
+                return rejection;
+            }
+        };
+    });
+});
 
 
 app.run(function($rootScope, func){
