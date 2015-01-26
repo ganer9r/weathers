@@ -39,7 +39,7 @@ var PictureListController = function($state, $scope, $http, $filter, ngTablePara
             return false;
         }
         
-        var id = item.id || '';
+        var id = item.id || 'new';
         $http.post('/api/picture/'+id, item).success(function(){
             if(!id)
                 item = {};
