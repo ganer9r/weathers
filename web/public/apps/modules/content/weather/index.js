@@ -31,7 +31,7 @@ angular.module('content.weather', [
 var WeatherListController = function($state, $scope, $q, $http, $filter, ngTableParams, func) {
     $scope.$nav.sub_title   = "리스트";
     $scope.req  = {};
-    $scope.newitem  = {};
+    $scope.newitem  = {'month':1, 'state':1, 'type':1};
 
     $scope.save = function(item){
         if(!item.month || !item.state){
@@ -76,7 +76,7 @@ var WeatherListController = function($state, $scope, $q, $http, $filter, ngTable
 
     $scope.selection   = function(data){
         var def = $q.defer();
-        //def.resolve(func.date.monthes());
+
         def.resolve(data);
         return def;
     };

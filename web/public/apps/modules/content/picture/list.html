@@ -1,12 +1,16 @@
 <table ng-table="tableParams" show-filter="true" class="table">
 <tr ng-repeat="item in $data">
     <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
-        <span ng-if="!item.$edit">{{item.season}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.season" /></div>
+        <span ng-if="!item.$edit">{{$fn.msg(item.season, $fn.weather.seasons)}}</span>
+        <div ng-if="item.$edit" style="width:100px">
+            <select ng-model="item.season" ng-options="v.id as v.title for v in $fn.weather.seasons" class="form-control"></select>
+        </div>
     </td>
     <td data-title="'state'" width="100" filter="{'stte':'text'}">
-        <span ng-if="!item.$edit">{{item.state}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.state" /></div>
+        <span ng-if="!item.$edit">{{$fn.msg(item.state, $fn.weather.states)}}</span>
+        <div ng-if="item.$edit" style="width:100px">
+            <select ng-model="item.state" ng-options="v.id as v.title for v in $fn.weather.states" class="form-control"></select>
+        </div>
     </td>
     <td data-title="'img'">
         <span ng-if="!item.$edit">{{item.img}}</span>
@@ -28,17 +32,19 @@
                 <td width="100">
                     <div>
                         <label> season :</label>
-                        <input class="form-control" type="number" ng-model="newitem.season" /></div>
+                        <select ng-model="newitem.season" ng-options="item.id as item.title for item in $fn.weather.seasons" class="form-control"></select>
+                    </div>
                 </td>
                 <td width="100">
                     <div>
                         <label> state :</label>
-                        <input class="form-control" type="number" ng-model="newitem.state" /></div>
+                        <select ng-model="newitem.state" ng-options="item.id as item.title for item in $fn.weather.states" class="form-control"></select>
+                    </div>
                 </td>
                 <td>
                     <div>
                         <label> image :</label>
-                        <input class="form-control" type="number" ng-model="newitem.img" /></div>
+                        <input class="form-control" type="text" ng-model="newitem.img" /></div>
                     </div>
                 </td>
                 <td width="width">

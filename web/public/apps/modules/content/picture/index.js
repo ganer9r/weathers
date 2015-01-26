@@ -31,10 +31,9 @@ angular.module('content.picture', [
 var PictureListController = function($state, $scope, $http, $filter, ngTableParams) {
     $scope.$nav.sub_title   = "리스트";
     $scope.req  = {};
-    $scope.newitem  = {};
+    $scope.newitem  = {'season':1, 'state':1};
 
     $scope.save = function(item){
-        console.log(item);
         if(!item.season || !item.img){
             alert("입력정보가 없습니다.");
             return false;

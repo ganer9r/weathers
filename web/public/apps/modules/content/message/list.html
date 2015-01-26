@@ -2,11 +2,15 @@
 <tr ng-repeat="item in $data">
     <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
         <span ng-if="!item.$edit">{{item.season}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="number" ng-model="item.season" /></div>
+        <div ng-if="item.$edit" style="width:100px">
+            <select ng-model="item.season" ng-options="v.id as v.title for v in $fn.weather.seasons" class="form-control"></select>
+        </div>
     </td>
     <td data-title="'state'" width="100" filter="{'stte':'text'}">
         <span ng-if="!item.$edit">{{item.state}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.state" /></div>
+        <div ng-if="item.$edit" style="width:100px">
+            <select ng-model="item.state" ng-options="v.id as v.title for v in $fn.weather.states" class="form-control"></select>
+        </div>
     </td>
     <td data-title="'ment'">
         <span ng-if="!item.$edit">{{item.ment}}</span>
@@ -28,12 +32,14 @@
                 <td width="100">
                     <div>
                         <label> season :</label>
-                        <input class="form-control" type="number" ng-model="newitem.season" /></div>
+                        <select ng-model="newitem.season" ng-options="item.id as item.title for item in $fn.weather.seasons" class="form-control"></select>
+                    </div>
                 </td>
                 <td width="100">
                     <div>
                         <label> state :</label>
-                        <input class="form-control" type="number" ng-model="newitem.state" /></div>
+                        <select ng-model="newitem.state" ng-options="item.id as item.title for item in $fn.weather.states" class="form-control"></select>
+                    </div>
                 </td>
                 <td>
                     <div>

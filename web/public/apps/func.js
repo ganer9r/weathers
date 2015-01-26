@@ -24,7 +24,6 @@ angular.module('myApp')
         },
     };
 
-    console.log(date.monthes);
     var weather = {
         'states' :[
             {'id':1, 'title':'맑음'},
@@ -32,14 +31,20 @@ angular.module('myApp')
             {'id':3, 'title':'비올것같음'},
             {'id':4, 'title':'바람붐'},
             {'id':5, 'title':'추움'},
-            {'id':6, 'title':'더움'},
+            {'id':6, 'title':'더움'}
+        ],
+        'seasons' :[
+            {'id':1, 'title':'봄'},
+            {'id':2, 'title':'여름'},
+            {'id':3, 'title':'가을'},
+            {'id':4, 'title':'겨울'}
         ],
         'types':[
             {'id':0, 'title':'값 없음'},
             {'id':1, 'title':'비옴'},
             {'id':2, 'title':'비올것같음'},
             {'id':3, 'title':'바람'},
-            {'id':4, 'title':'온도'},
+            {'id':4, 'title':'온도'}
         ],
     };
 

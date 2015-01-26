@@ -3,19 +3,19 @@
     <td data-title="'Month'" width="100" filter="{ 'month': 'select' }" filter-data="selection($fn.date.monthes)">
         <span ng-if="!item.$edit">{{$fn.msg(item.month, $fn.date.monthes)}}</span>
         <div ng-if="item.$edit">
-            <select ng-model="item.month" ng-options="item.id as item.title for item in $fn.date.monthes" class="form-control"></select>
+            <select ng-model="item.month" ng-options="v.id as v.title for v in $fn.date.monthes" class="form-control"></select>
         </div>
     </td>
     <td data-title="'State'" width="100" filter="{ 'state': 'select' }" filter-data="selection($fn.weather.states)">
         <span ng-if="!item.$edit">{{$fn.msg(item.state, $fn.weather.states)}}</span>
         <div ng-if="item.$edit">
-            <select ng-model="item.state" ng-options="item.id as item.title for item in $fn.weather.states" class="form-control"></select>
+            <select ng-model="item.state" ng-options="v.id as v.title for v in $fn.weather.states" class="form-control"></select>
         </div>
     </td>
     <td data-title="'Type'" width="100" filter="{ 'type': 'select' }" filter-data="selection($fn.weather.types)">
         <span ng-if="!item.$edit">{{$fn.msg(item.type, $fn.weather.types)}}</span>
         <div ng-if="item.$edit">
-            <select ng-model="item.type" ng-options="item.id as item.title for item in $fn.weather.types" class="form-control"></select>
+            <select ng-model="item.type" ng-options="v.id as v.title for v in $fn.weather.types" class="form-control"></select>
         </div>
     </td>
     <td data-title="'Value'" filter="{ 'val': 'text' }">

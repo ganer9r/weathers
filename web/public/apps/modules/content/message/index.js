@@ -31,7 +31,7 @@ angular.module('content.message', [
 var MessageListController = function($state, $scope, $http, $filter, ngTableParams) {
     $scope.$nav.sub_title   = "리스트";
     $scope.req  = {};
-    $scope.newitem  = {};
+    $scope.newitem  = {'season':1, 'state':1};
 
     $scope.save = function(item){
         if(!item.season || !item.ment){
