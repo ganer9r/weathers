@@ -27,7 +27,7 @@ class DongCodeService extends _ServiceInstance{
 	private function getDongCodeByAddress($address){
 		$data = DongCode::where('address_search', 'like', $address.'%')->first();
 		if($data)
-			return $data->code;
+			return array($data->code, $data->address);
 		else{
 			if(mb_strlen($address) < 7)
 				return '';

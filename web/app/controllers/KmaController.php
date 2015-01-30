@@ -17,9 +17,9 @@ class KmaController extends BaseController {
 	}
 
 	public function getWeather2Coords($lat, $lng){
-		$dongCode   = DongCodeService::getInstance()->getDongCode2Coords($lat, $lng);
+		list($dongCode, $address)   = DongCodeService::getInstance()->getDongCode2Coords($lat, $lng);
 		$weather    = WeatherService::getInstance()->getWeather($dongCode);
-
+		$weather['address'] = $address;
 
 		return Response::json(array(
 			'latlng'=> array('lat'=>$lat, 'lng'=>$lng),
