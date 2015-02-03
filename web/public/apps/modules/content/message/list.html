@@ -1,13 +1,13 @@
 <table ng-table="tableParams" show-filter="true" class="table table-striped">
 <tr ng-repeat="item in $data">
     <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
-        <span ng-if="!item.$edit">{{item.season}}</span>
+        <span ng-if="!item.$edit">{{$fn.msg(item.season, $fn.weather.seasons)}}</span>
         <div ng-if="item.$edit" style="width:100px">
             <select ng-model="item.season" ng-options="v.id as v.title for v in $fn.weather.seasons" class="form-control"></select>
         </div>
     </td>
     <td data-title="'state'" width="100" filter="{'stte':'text'}">
-        <span ng-if="!item.$edit">{{item.state}}</span>
+        <span ng-if="!item.$edit">{{$fn.msg(item.state, $fn.weather.states)}}</span>
         <div ng-if="item.$edit" style="width:100px">
             <select ng-model="item.state" ng-options="v.id as v.title for v in $fn.weather.states" class="form-control"></select>
         </div>

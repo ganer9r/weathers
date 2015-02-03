@@ -1,6 +1,6 @@
 angular.module('content.picture', [
   'ui.router',
-  'ngTable',
+  'angularFileUpload',
 ])
   
 .config(
@@ -18,7 +18,7 @@ angular.module('content.picture', [
             .state('content.picture.list', {
               url: '',
               templateUrl: 'apps/modules/content/picture/list.html',
-              controller: PictureListController,
+              controller: PictureListController ,
             });
 
     }
@@ -28,24 +28,45 @@ angular.module('content.picture', [
 
 
 
-var PictureListController = function($state, $scope, $http, $filter, ngTableParams) {
+var PictureListController = function($state, $scope, $http, $filter, $timeout, $upload) {
     $scope.$nav.sub_title   = "리스트";
     $scope.req  = {};
-    $scope.newitem  = {'season':1, 'state':1};
+    $scope.newItem  = {'season':1, 'state':1};
+    $scope.selectedFile = null;
+
+    $scope.onFile = function($file){
+        console.log($scope.selectedFile);
+        var file = $file[0];
+        $scope.selectedFile = file;
+
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = function(e) {
+            $timeout(function () {
+                file.dataUrl = e.target.result;
+                console.log(file.dataUrl);
+            });
+        }
+
+    }
 
     $scope.save = function(item){
-        if(!item.season || !item.img){
+        var id = item.id || 'new';
+        if(!item.season){
             alert("입력정보가 없습니다.");
             return false;
         }
-        
-        var id = item.id || 'new';
-        $http.post('/api/picture/'+id, item).success(function(){
-            if(!id)
-                item = {};
-            $state.reload();
+
+        $scope.upload = $upload.upload({
+            url: '/api/picture/'+id,
+            method: 'POST',
+            file: $scope.selectedFile,
+            data : item,
+            fileFormDataName : 'img',
+        }).success(function(data, status, headers, config) {
+            //서버에서 전송시 보낸 email을 그대로 응답 데이터로 전달함.
+            alert("업로드 완료");
         });
-        item.$edit = false;
 
     }
 
@@ -58,20 +79,25 @@ var PictureListController = function($state, $scope, $http, $filter, ngTablePara
         $http.get('/api/picture').success(function(data, status){
             $scope.data = data.pictures;
 
-            $scope.tableParams = new ngTableParams({
-                page: 1,            // show first page
-                count: 10,          // count per page
-            }, {
-                total: $scope.data.length, // length of data
-                getData: function($defer, params) {
-                    var orderedData = params.filter() ?
-                       $filter('filter')($scope.data, params.filter()) :
-                       $scope.data;
-
-                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                }
-            });
         });
+    }
+
+    $scope.buttonName = function(item){
+        if(item.id) return '수정하기';
+        else        return '저장하기';
+    }
+
+    $scope.setForm  = function(item){
+        item = item || {'season':1, 'state':1};
+        $scope.newItem = item;
+    }
+    $scope.showPic = function(item){
+
+        if($scope.selectedFile )
+            return $scope.selectedFile.dataUrl;
+        else
+            return item.img;
+
     }
 
     $scope.load();

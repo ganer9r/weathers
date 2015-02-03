@@ -107,6 +107,12 @@ Route::group(array('before'=>'guest'), function(){
 
 });
 
+Route::get('/api/login', array(
+	'uses' => 'HomeController@login'
+));
+Route::get('/api/weather/data', array(
+	'uses' => 'WeatherController@getData'
+));
 Route::get('/api/message', array(
 	'uses'  => 'MessageController@getAll'
 ));
@@ -139,12 +145,15 @@ Route::delete('/api/picture/{id}', array(
 
 
 Route::get('/api/kma/test', function() {
-	return Response::json(array(
-		'code' => 'code',
-		'name1' => '1',
-		'name2' => '2',
-		'name3' => '3',
-	));
+    $album    = Laracasa::getAlbum();
+	echo "<pre>";
+	foreach($album->getEntry() as $item){
+		print_R($item->getMediaGroup()->getContent()[0]->getUrl());
+		echo "<br/>";
+	}
+
+    exit;
+    echo "111";exit;
 });
 Route::get('/api/kma/codes', array(
 	'uses'  => 'KmaController@getCodeAll'

@@ -4,8 +4,20 @@
 
 class WeatherController extends BaseController{
 
+	public function getData(){
+		$weather    = Weather::get(array('month', 'state', 'type', 'val'));
+		$picture    = Picture::get(array('season', 'state', 'img'));
+		$message    = Message::get(array('season', 'state', 'ment'));
+
+		return Response::json(array(
+			'weather'   => $weather,
+			'picture'   => $picture,
+			'message'   => $message,
+		));
+	}
+
 	public function getAll(){
-		$list = Weather::get(array('month', 'state', 'type', 'val'))->all();
+		$list = Weather::get()->all();
 		$last_date = Weather::max('updated_at');
 
 		return Response::json(array('weather_date'=>$last_date, 'weathers'=> $list));

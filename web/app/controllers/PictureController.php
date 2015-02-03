@@ -12,6 +12,7 @@ class PictureController extends BaseController{
 	}
 
 	public function set($id=''){
+
 		if( Request::isMethod('POST') ){
 			if($id){
 				$model = Picture::find($id);
@@ -19,15 +20,29 @@ class PictureController extends BaseController{
 			if(!isset($model))
 				$model = new Picture;
 
+
+			try {
+				$result = Laracasa::addPhoto($_FILES['img']);
+				if ($result['state']) {
+					$pic = Laracasa::getPhotoById($result['id']);
+					$picasa = $pic->getMediaGroup()->getContent()[0];
+
+					$model->img = $picasa->getUrl();
+					$model->picasa_id = $result['id'];
+				}
+			}catch(Exception $e){}
+
 			$model->season  = Input::get('season', '');
 			$model->state   = Input::get('state', '');
-			$model->img     = Input::get('img', '');
 			$model->save();
 
 		}else if(Request::isMethod('DEMETE')){
 			$model = Picture::find($id);
-			if($model)
+
+			if($model) {
+				//Laracasa::deletePhoto($model->picasa_id);
 				$model->delete();
+			}
 		}
 
 		return Response::json(true);

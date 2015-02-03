@@ -17,16 +17,17 @@
     <script src="assets/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="assets/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="assets/bower_components/ng-table/ng-table.min.js"></script>
+    <script src="assets/bower_components/ng-file-upload/angular-file-upload.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="http://class.iamclass.net/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <link media="all" type="text/css" rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/animate.css">
+    <!-- link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/animate.css">
     <link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/font-awesome.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/font.css">
-    <link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/plugin.css">
+    <link media="all" type="text/css" rel="stylesheet" href="http://class.iamclass.net/bootstrap/css/plugin.css" -->
     <link media="all" type="text/css" rel="stylesheet" href="assets/style.css">
     <style>
         nav a {color: #aaa;}

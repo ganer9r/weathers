@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+        "n0m4dz/laracasa": "dev-master",
 		"laravel/framework": "4.2.*"
 	},
 	"autoload": {

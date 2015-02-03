@@ -23,6 +23,19 @@ class HomeController extends BaseController {
 		return View::make('home');
 	}
 
+	public function login()
+	{
+		$picture = Picture::max("updated_at");
+		$message = Message::max("updated_at");
+		$weather = Weather::max("updated_at");
+
+		return Response::json(array(
+			'picture'=> $picture,
+			'message'=> $message,
+			'weather'=> $weather,
+		));
+	}
+
 	public function admin()
 	{
 		$path   = public_path().'/apps';

@@ -1,57 +1,63 @@
-<table ng-table="tableParams" show-filter="true" class="table">
-<tr ng-repeat="item in $data">
-    <td data-title="'Season'" width="100" filter="{ 'season': 'text' }">
-        <span ng-if="!item.$edit">{{$fn.msg(item.season, $fn.weather.seasons)}}</span>
-        <div ng-if="item.$edit" style="width:100px">
-            <select ng-model="item.season" ng-options="v.id as v.title for v in $fn.weather.seasons" class="form-control"></select>
-        </div>
-    </td>
-    <td data-title="'state'" width="100" filter="{'stte':'text'}">
-        <span ng-if="!item.$edit">{{$fn.msg(item.state, $fn.weather.states)}}</span>
-        <div ng-if="item.$edit" style="width:100px">
-            <select ng-model="item.state" ng-options="v.id as v.title for v in $fn.weather.states" class="form-control"></select>
-        </div>
-    </td>
-    <td data-title="'img'">
-        <span ng-if="!item.$edit">{{item.img}}</span>
-        <div ng-if="item.$edit"><input class="form-control" type="text" ng-model="item.img" /></div>
-    </td>
-    <td data-title="'Actions'" width="200">
-        <a ng-if="!item.$edit" href="" class="btn btn-default btn-xs" ng-click="item.$edit = true">Edit</a>
-        <a ng-if="item.$edit" href="" class="btn btn-primary btn-xs" ng-click="save(item)">Save</a>
-        <a ng-if="item.$edit" href="" class="btn btn-danger btn-xs" ng-click="delete(item)">delete</a>
-    </td>
-</tr>
-</table>
+<style>
+.img {overflow: scroll;height:150px;}
+.img img{width:100%;}
+</style>
 
-<div style="background:#aaa;">
-    <h5>new Season Image</h5>
-    <div>
-        <table class="table">
-            <tr>
-                <td width="100">
-                    <div>
-                        <label> season :</label>
-                        <select ng-model="newitem.season" ng-options="item.id as item.title for item in $fn.weather.seasons" class="form-control"></select>
+    <div class="col-xs-9">
+        <div class="row">
+            <div class="col-xs-4" ng-repeat="item in data">
+                <Div class="thumbnail" ng-click="setForm(item)">
+                    <div class="img">
+                        <img src="{{item.img}} "/>
                     </div>
-                </td>
-                <td width="100">
-                    <div>
-                        <label> state :</label>
-                        <select ng-model="newitem.state" ng-options="item.id as item.title for item in $fn.weather.states" class="form-control"></select>
+                    <div class="caption">
+                        <div>
+                            <div>{{$fn.msg(item.season, $fn.weather.seasons)}}</div>
+                            <div>{{$fn.msg(item.state, $fn.weather.states)}}</div>
+                        </div>
                     </div>
-                </td>
-                <td>
-                    <div>
-                        <label> image :</label>
-                        <input class="form-control" type="text" ng-model="newitem.img" /></div>
-                    </div>
-                </td>
-                <td width="width">
-                    <a href="" class="btn btn-primary btn-xs" ng-click="save(newitem)">Save</a>
-                </td>
-            </tr>
-        </table>
-
+                </Div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="col-xs-3">
+        <div class="row" style="padding-bottom: 10px;">
+            <button class="btn btn-xs pull-right" ng-click="setForm()">새로입력</button>
+            <div class="pull-right"> &nbsp; </div>
+            <button class="btn btn-xs btn-danger pull-right" ng-click="setForm()">삭제하기</button>
+        </div>
+
+        <div class="row pannel">
+            <Div class="thumbnail">
+                <form>
+                    <input type="hidden" ng-model="newItem.id" name="id" />
+                    <div>
+                        <img src="{{showPic(newItem)}}"  style="width:100%"/>
+                    </div>
+                    <div class="caption">
+                        <div>
+                            <label>이미지:</label>
+                            <input type="file" name="picture" accept="image/*"
+                                   ng-model="picture" ng-file-select="onFile($files)"/>
+                        </div>
+                        <div>
+                            <label>계절:</label>
+                            <select ng-model="newItem.season" name="season"
+                                    ng-options="item.id as item.title for item in $fn.weather.seasons" class="form-control"></select>
+                        </div>
+                        <div>
+                            <label>상태:</label>
+                            <select ng-model="newItem.state" name="state"
+                                     ng-options="item.id as item.title for item in $fn.weather.states" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="{{buttonName(newItem)}}" class="btn btn-block"
+                               ng-disabled="$isUploading" ng-click="save(newItem)"/>
+                    </div>
+                </form>
+
+            </Div>
+
+        </div>
+    </div>
