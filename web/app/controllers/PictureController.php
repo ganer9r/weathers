@@ -24,6 +24,9 @@ class PictureController extends BaseController{
 			try {
 				$result = Laracasa::addPhoto($_FILES['img']);
 				if ($result['state']) {
+					if($model->picasa_id)
+					Laracasa::deletePhoto($model->picasa_id);
+
 					$pic = Laracasa::getPhotoById($result['id']);
 					$picasa = $pic->getMediaGroup()->getContent()[0];
 
@@ -40,7 +43,9 @@ class PictureController extends BaseController{
 			$model = Picture::find($id);
 
 			if($model) {
-				//Laracasa::deletePhoto($model->picasa_id);
+				if($model->picasa_id)
+					Laracasa::deletePhoto($model->picasa_id);
+
 				$model->delete();
 			}
 		}

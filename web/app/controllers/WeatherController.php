@@ -10,9 +10,9 @@ class WeatherController extends BaseController{
 		$message    = Message::get(array('season', 'state', 'ment'));
 
 		return Response::json(array(
-			'weather'   => $weather,
-			'picture'   => $picture,
-			'message'   => $message,
+			'weathers'   => $weather,
+			'pictures'   => $picture,
+			'messages'   => $message,
 		));
 	}
 
