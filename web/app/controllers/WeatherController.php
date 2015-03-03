@@ -1,13 +1,14 @@
 <?php
 
 
+use util\String;
 
 class WeatherController extends BaseController{
 
 	public function getData(){
-		$weather    = Weather::get(array('month', 'state', 'type', 'val'));
-		$picture    = Picture::get(array('season', 'state', 'img'));
-		$message    = Message::get(array('season', 'state', 'ment'));
+		$weather    = Weather::orderBy('updated_at', 'desc')->get(array('month', 'state', 'type', 'val', String::db('updated_at') ));
+		$picture    = Picture::orderBy('updated_at', 'desc')->get(array('season', 'state', 'img', String::db('updated_at')));
+		$message    = Message::orderBy('updated_at', 'desc')->get(array('season', 'state', 'ment', String::db('updated_at')));
 
 		return Response::json(array(
 			'weathers'   => $weather,
