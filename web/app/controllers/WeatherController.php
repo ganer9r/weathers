@@ -10,6 +10,12 @@ class WeatherController extends BaseController{
 		$picture    = Picture::orderBy('updated_at', 'desc')->get(array('season', 'state', 'img', String::db('updated_at')));
 		$message    = Message::orderBy('updated_at', 'desc')->get(array('season', 'state', 'ment', String::db('updated_at')));
 
+		foreach($picture as &$p){
+			if($p->img[0] == '.'){
+				$p->img = Request::root().substr($p->img, 1, strlen($p->img)-1);
+			}
+		}
+
 		return Response::json(array(
 			'weathers'   => $weather,
 			'pictures'   => $picture,
