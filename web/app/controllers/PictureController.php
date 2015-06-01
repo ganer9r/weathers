@@ -29,7 +29,7 @@ class PictureController extends BaseController{
 				$path = storage_path()."/files/pictures/";
 
 				$file->move($path, $fileName );
-				$model->img = '/files/pictures/'.$fileName;
+				$model->img = './files/pictures/'.$fileName;
 			}catch(Exception $e){ print_r($e->getMessage());}
 
 			$model->season  = Input::get('season', '');
