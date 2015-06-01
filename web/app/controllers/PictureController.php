@@ -1,6 +1,7 @@
 <?php
 
 
+use Illuminate\Support\Facades\Input;
 
 class PictureController extends BaseController{
 
@@ -13,6 +14,7 @@ class PictureController extends BaseController{
 
 	public function set($id=''){
 
+
 		if( Request::isMethod('POST') ){
 			if($id){
 				$model = Picture::find($id);
@@ -20,26 +22,21 @@ class PictureController extends BaseController{
 			if(!isset($model))
 				$model = new Picture;
 
-
 			try {
-				$result = Laracasa::addPhoto($_FILES['img']);
-				if ($result['state']) {
-					if($model->picasa_id)
-					Laracasa::deletePhoto($model->picasa_id);
+				$file = Input::file('img');
+				$ext = preg_Replace("@^(.*)\.@i", ".", $file->getClientOriginalName());
+				$fileName = $model->season.'_'.time().$ext;
+				$path = storage_path()."/files/pictures/";
 
-					$pic = Laracasa::getPhotoById($result['id']);
-					$picasa = $pic->getMediaGroup()->getContent()[0];
-
-					$model->img = $picasa->getUrl();
-					$model->picasa_id = $result['id'];
-				}
-			}catch(Exception $e){}
+				$file->move($path, $fileName );
+				$model->img = '/files/pictures/'.$fileName;
+			}catch(Exception $e){ print_r($e->getMessage());}
 
 			$model->season  = Input::get('season', '');
 			$model->state   = Input::get('state', '');
 			$model->save();
 
-		}else if(Request::isMethod('DEMETE')){
+		}else if(Request::isMethod('DELETE')){
 			$model = Picture::find($id);
 
 			if($model) {

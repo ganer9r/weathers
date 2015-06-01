@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-        "n0m4dz/laracasa": "dev-master",
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"anahkiasen/flickering": "^0.1.2"
 	},
 	"autoload": {
 		"classmap": [

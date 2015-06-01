@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'tmhOAuth' => array($vendorDir . '/themattharris/tmhoauth'),
     'Whoops' => array($vendorDir . '/filp/whoops/src'),
     'System' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
@@ -15,8 +16,6 @@ return array(
     'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\DomCrawler\\' => array($vendorDir . '/symfony/dom-crawler'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
@@ -29,7 +28,6 @@ return array(
     'PHPParser' => array($vendorDir . '/nikic/php-parser/lib'),
     'Normalizer' => array($vendorDir . '/patchwork/utf8/class'),
     'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-    'N0m4dz\\Laracasa\\' => array($vendorDir . '/n0m4dz/laracasa/src'),
     'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Illuminate' => array($vendorDir . '/laravel/framework/src'),
@@ -38,4 +36,5 @@ return array(
     'ClassPreloader' => array($vendorDir . '/classpreloader/classpreloader/src'),
     'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
     'Boris' => array($vendorDir . '/d11wtq/boris/lib'),
+    '' => array($vendorDir . '/opauth/flickr'),
 );

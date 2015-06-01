@@ -6,5 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Underscore\\' => array($vendorDir . '/anahkiasen/underscore-php/src', $vendorDir . '/anahkiasen/underscore-php/tests'),
+    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
+    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Flickering\\' => array($vendorDir . '/anahkiasen/flickering/src/Flickering'),
 );
