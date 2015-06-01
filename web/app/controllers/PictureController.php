@@ -23,7 +23,7 @@ class PictureController extends BaseController{
 				$model = new Picture;
 
 			try {
-				if (Input::hasFile('photo')) {
+				if (Input::hasFile('img')) {
 					$file = Input::file('img');
 					$ext = preg_Replace("@^(.*)\.@i", ".", $file->getClientOriginalName());
 					$fileName = $model->season . '_' . time() . $ext;
