@@ -23,13 +23,16 @@ class PictureController extends BaseController{
 				$model = new Picture;
 
 			try {
-				$file = Input::file('img');
-				$ext = preg_Replace("@^(.*)\.@i", ".", $file->getClientOriginalName());
-				$fileName = $model->season.'_'.time().$ext;
-				$path = storage_path()."/files/pictures/";
+				if (Input::hasFile('photo')) {
+					$file = Input::file('img');
+					$ext = preg_Replace("@^(.*)\.@i", ".", $file->getClientOriginalName());
+					$fileName = $model->season . '_' . time() . $ext;
+					$path = storage_path() . "/files/pictures/";
 
-				$file->move($path, $fileName );
-				$model->img = './files/pictures/'.$fileName;
+					$file->move($path, $fileName);
+					$model->img = './files/pictures/' . $fileName;
+				}
+
 			}catch(Exception $e){ print_r($e->getMessage());}
 
 			$model->season  = Input::get('season', '');
